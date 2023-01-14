@@ -19,19 +19,11 @@ export class PostController {
 
   @Get(':id')
    findOne(@Param('id') id: string) {
-    // const find = await this.postService.findOne(+id);
-    // if (!find) {
-    //   throw new NotFoundException('Статья не найдена.')
-    // }
     return this.postService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
-    // const find = await this.postService.update(+id, updatePostDto);
-    // if (!find) {
-    //   throw new NotFoundException('Статья не найдена.')
-    // }
     return this.postService.update(+id, updatePostDto);
   }
 

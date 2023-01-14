@@ -17,7 +17,6 @@ const common_1 = require("@nestjs/common");
 const user_service_1 = require("./user.service");
 const create_user_dto_1 = require("./dto/create-user.dto");
 const update_user_dto_1 = require("./dto/update-user.dto");
-const user_entity_1 = require("./entities/user.entity");
 let UserController = class UserController {
     constructor(userService) {
         this.userService = userService;
@@ -75,7 +74,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], UserController.prototype, "remove", null);
 UserController = __decorate([
-    (0, common_1.Controller)(user_entity_1.USERS),
+    (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [user_service_1.UserService])
 ], UserController);
 exports.UserController = UserController;

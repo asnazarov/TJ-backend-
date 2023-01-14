@@ -9,9 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserEntity = exports.USERS = void 0;
+exports.UserEntity = void 0;
 const typeorm_1 = require("typeorm");
-exports.USERS = 'users';
 let UserEntity = class UserEntity {
 };
 __decorate([
@@ -34,8 +33,16 @@ __decorate([
     (0, typeorm_1.Column)({ default: true }),
     __metadata("design:type", Boolean)
 ], UserEntity.prototype, "isActive", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)({ type: "timestamp" }),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "createdAt", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)({ type: "timestamp" }),
+    __metadata("design:type", Date)
+], UserEntity.prototype, "updatedAt", void 0);
 UserEntity = __decorate([
-    (0, typeorm_1.Entity)(exports.USERS)
+    (0, typeorm_1.Entity)('users')
 ], UserEntity);
 exports.UserEntity = UserEntity;
 //# sourceMappingURL=user.entity.js.map

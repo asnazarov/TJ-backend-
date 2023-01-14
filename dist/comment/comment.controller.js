@@ -38,7 +38,7 @@ let CommentController = class CommentController {
     }
 };
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('create'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_comment_dto_1.CreateCommentDto]),
@@ -73,7 +73,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], CommentController.prototype, "remove", null);
 CommentController = __decorate([
-    (0, common_1.Controller)('comment'),
+    (0, common_1.Controller)('comments'),
     __metadata("design:paramtypes", [comment_service_1.CommentService])
 ], CommentController);
 exports.CommentController = CommentController;

@@ -1,8 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
-import {IsEmail} from "class-validator";
-export const USERS = 'users'
+import {Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn} from 'typeorm';
 
-@Entity(USERS)
+@Entity('users')
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -11,13 +9,19 @@ export class UserEntity {
   fullName: string;
 
   @Column()
-  email:string
+  email: string
 
   @Column()
   password: string;
 
-  @Column({ default: true })
+  @Column({default: true})
   isActive: boolean;
+
+  @CreateDateColumn({type: "timestamp"})
+  createdAt: Date
+
+  @UpdateDateColumn({type: "timestamp"})
+  updatedAt: Date
 }
 
 
