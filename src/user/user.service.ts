@@ -3,7 +3,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
-import {UserEntity} from "./entities";
+import {UserEntity} from "../index";
 import {isNumber} from "class-validator";
 
 @Injectable()
@@ -25,7 +25,8 @@ export class UserService {
   }
 
   findUsersById(id: number) {
-    // return this.userRepository.findOne(id);
+    // @ts-ignore
+    return this.repository.findOne(id);
   }
 
   // findOne(id: number) {

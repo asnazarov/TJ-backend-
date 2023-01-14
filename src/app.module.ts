@@ -4,7 +4,9 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import {TypeOrmModule} from "@nestjs/typeorm";
-import entities from "./user/entities";
+import { PostModule } from './post/post.module';
+import { CommentModule } from './comment/comment.module';
+import entities from "./index";
 
 // @Module({
 //   imports: [UserModule],
@@ -25,11 +27,15 @@ import entities from "./user/entities";
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
         entities: entities,
+        // для продакшена synchronize: false, иначе при build все данные сотрутся
+        // синхронизация нужна только для dev режима
         synchronize: true,
       }),
       inject: [ConfigService],
     }),
-    UserModule],
+    UserModule,
+    PostModule,
+    CommentModule],
   controllers: [AppController],
   providers: [AppService],
 })

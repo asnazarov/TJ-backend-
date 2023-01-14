@@ -14,8 +14,16 @@ const class_validator_1 = require("class-validator");
 class CreateUserDto {
 }
 __decorate([
-    (0, class_validator_1.IsEmail)(),
+    (0, class_validator_1.Length)(2),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "fullName", void 0);
+__decorate([
+    (0, class_validator_1.IsEmail)(undefined, { message: 'Неверная почта' }),
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "email", void 0);
+__decorate([
+    (0, class_validator_1.Length)(6, 32, { message: 'Пароль должен быть минимум 6 символов' }),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "password", void 0);
 exports.CreateUserDto = CreateUserDto;
 //# sourceMappingURL=create-user.dto.js.map

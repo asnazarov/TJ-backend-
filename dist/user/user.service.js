@@ -16,7 +16,7 @@ exports.UserService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
-const entities_1 = require("./entities");
+const index_1 = require("../index");
 let UserService = class UserService {
     constructor(repository) {
         this.repository = repository;
@@ -29,6 +29,7 @@ let UserService = class UserService {
         return this.repository.find();
     }
     findUsersById(id) {
+        return this.repository.findOne(id);
     }
     update(id, updateUserDto) {
         return `This action updates a #${id} user`;
@@ -39,7 +40,7 @@ let UserService = class UserService {
 };
 UserService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(entities_1.UserEntity)),
+    __param(0, (0, typeorm_1.InjectRepository)(index_1.UserEntity)),
     __metadata("design:paramtypes", [typeorm_2.Repository])
 ], UserService);
 exports.UserService = UserService;

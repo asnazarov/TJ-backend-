@@ -13,7 +13,9 @@ const app_service_1 = require("./app.service");
 const user_module_1 = require("./user/user.module");
 const config_1 = require("@nestjs/config");
 const typeorm_1 = require("@nestjs/typeorm");
-const entities_1 = require("./user/entities");
+const post_module_1 = require("./post/post.module");
+const comment_module_1 = require("./comment/comment.module");
+const index_1 = require("./index");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -29,12 +31,14 @@ AppModule = __decorate([
                     username: configService.get('DB_USERNAME'),
                     password: configService.get('DB_PASSWORD'),
                     database: configService.get('DB_NAME'),
-                    entities: entities_1.default,
+                    entities: index_1.default,
                     synchronize: true,
                 }),
                 inject: [config_1.ConfigService],
             }),
-            user_module_1.UserModule
+            user_module_1.UserModule,
+            post_module_1.PostModule,
+            comment_module_1.CommentModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
