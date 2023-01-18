@@ -65,7 +65,9 @@ let PostService = class PostService {
         return { items, total };
     }
     async findOne(id) {
-        const find = await this.repository.findOne(id);
+        const find = await this.repository.findOne({
+            where: { id }
+        });
         if (!find) {
             throw new common_1.NotFoundException('Статья не найдена.');
         }
@@ -74,14 +76,14 @@ let PostService = class PostService {
         return find;
     }
     async update(id, dto) {
-        const find = await this.repository.findOne(id);
+        const find = await this.repository.findOne({ where: { id } });
         if (!find) {
             throw new common_1.NotFoundException('Статья не найдена.');
         }
         return this.repository.update(id, dto);
     }
     async remove(id) {
-        const find = await this.repository.findOne(id);
+        const find = await this.repository.findOne({ where: { id } });
         if (!find) {
             throw new common_1.NotFoundException('Статья не найдена');
         }

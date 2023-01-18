@@ -29,11 +29,11 @@ export class PostController {
   }
 
   @Get(':id')
-   findOne(@Param('id') id: string) {
+   findOne(@Param('id') id: number) {
     return this.postService.findOne(+id);
   }
 
-  @Patch(':id')
+  @Patch('id/:id')
   update(@Param('id') id: string, @Body() updatePostDto: UpdatePostDto) {
     return this.postService.update(+id, updatePostDto);
   }

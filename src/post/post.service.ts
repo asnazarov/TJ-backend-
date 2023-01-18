@@ -42,7 +42,7 @@ export class PostService {
     return {items, total}
   }
 
- async search(dto: SearchPostDto) {
+  async search(dto: SearchPostDto) {
     // return this.repository.find({
     //   order: {
     //     createdAt: "DESC"
@@ -67,20 +67,22 @@ export class PostService {
     }
 
 
-   qb.setParameters({
-     title: `%${dto.title}%`,
-     body: `%${dto.body}%`,
-     tag: `%${dto.tag}%`,
-     views: dto.views || '',
-   })
+    qb.setParameters({
+      title: `%${dto.title}%`,
+      body: `%${dto.body}%`,
+      tag: `%${dto.tag}%`,
+      views: dto.views || '',
+    })
 
     const [items, total] = await qb.getManyAndCount()
 
-   return {items, total}
+    return {items, total}
   }
 
   async findOne(id: number) {
-    const find = await this.repository.findOne(id);
+    const find = await this.repository.findOne({
+      where: {id}
+    });
 
     if (!find) {
       throw new NotFoundException('Статья не найдена.')
@@ -92,7 +94,7 @@ export class PostService {
   }
 
   async update(id: number, dto: UpdatePostDto) {
-    const find = await this.repository.findOne(id);
+    const find = await this.repository.findOne({where: {id}});
     if (!find) {
       throw new NotFoundException('Статья не найдена.')
     }
@@ -100,7 +102,7 @@ export class PostService {
   }
 
   async remove(id: number) {
-    const find = await this.repository.findOne(id)
+    const find = await this.repository.findOne({where: {id}})
     if (!find) {
       throw new NotFoundException('Статья не найдена')
     }

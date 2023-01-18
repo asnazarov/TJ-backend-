@@ -28,8 +28,16 @@ let UserService = class UserService {
     findAll() {
         return this.repository.find();
     }
-    findUsersById(id) {
+    findById(id) {
         return this.repository.findOne(id);
+    }
+    findByCond(cond) {
+        return this.repository.findOne({
+            where: {
+                email: cond.email,
+                password: cond.password
+            }
+        });
     }
     update(id, updateUserDto) {
         return `This action updates a #${id} user`;

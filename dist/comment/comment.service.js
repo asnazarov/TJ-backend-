@@ -28,7 +28,7 @@ let CommentService = class CommentService {
         return this.repository.find();
     }
     findOne(id) {
-        return this.repository.findOne(id);
+        return this.repository.findOne({ where: { id } });
     }
     update(id, dto) {
         return this.repository.update(id, dto);

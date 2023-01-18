@@ -15,7 +15,7 @@ export declare class PostController {
         items: import("..").PostEntity[];
         total: number;
     }>;
-    findOne(id: string): Promise<import("..").PostEntity>;
+    findOne(id: number): Promise<import("..").PostEntity>;
     update(id: string, updatePostDto: UpdatePostDto): Promise<import("typeorm").UpdateResult>;
     remove(id: string): Promise<import("typeorm").DeleteResult>;
 }
