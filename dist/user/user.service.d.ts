@@ -11,5 +11,5 @@ export declare class UserService {
     findById(id: number): Promise<UserEntity>;
     findByCond(cond: LoginUserDto): Promise<UserEntity>;
     update(id: number, updateUserDto: UpdateUserDto): string;
-    remove(id: number): string;
+    remove(id: number): Promise<import("typeorm").DeleteResult>;
 }
